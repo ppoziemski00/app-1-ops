@@ -1,13 +1,20 @@
 pipeline {
-    agent any
-    parameters {
-        string(name: 'GREETING', defaultValue: 'Hello', description: 'The greeting message')
-        choice(name: 'BRANCH', choices: ['master', 'dev'], description: 'Branch to build')
-    }
+    agent any // Określa, że pipeline może być wykonany na dowolnym agencie
+
     stages {
-        stage('Example') {
+        stage('Build') { // Etap budowania
             steps {
-                echo "${params.GREETING}, we are building the ${params.BRANCH} branch."
+                echo 'Building...'
+            }
+        }
+        stage('Test') { // Etap testowania
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') { // Etap wdrażania
+            steps {
+                echo 'Deploying...'
             }
         }
     }
